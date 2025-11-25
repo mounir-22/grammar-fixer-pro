@@ -1,0 +1,64 @@
+/* Grammar Fixer Pro - Content Styles */
+/* Styles for highlighting text boxes during scanning */
+
+.grammar-fixer-highlight {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.grammar-fixer-highlight::before {
+  content: '📝';
+  position: absolute !important;
+  top: -28px !important;
+  left: -2px !important;
+  background: #3b82f6 !important;
+  color: white !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  z-index: 10000 !important;
+  line-height: 1 !important;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
+}
+
+.grammar-fixer-current {
+  outline: 3px solid #059669 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 1px #059669, 0 4px 12px rgba(5, 150, 105, 0.15) !important;
+  animation: grammar-fixer-pulse 2s infinite !important;
+}
+
+.grammar-fixer-current::before {
+  content: '✏️ EDITING' !important;
+  background: #059669 !important;
+  animation: none !important;
+}
+
+@keyframes grammar-fixer-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px #059669, 0 4px 12px rgba(5, 150, 105, 0.15) !important;
+  }
+  50% {
+    box-shadow: 0 0 0 1px #059669, 0 4px 20px rgba(5, 150, 105, 0.25) !important;
+  }
+}
+
+/* Applied correction animation */
+.grammar-fixer-applied {
+  animation: grammar-fixer-success 1.5s ease-out !important;
+}
+
+@keyframes grammar-fixer-success {
+  0% {
+    background-color: #f0fdf4 !important;
+    border-color: #059669 !important;
+  }
+  100% {
+    background-color: transparent !important;
+    border-color: inherit !important;
+  }
+}
