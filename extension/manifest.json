@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Grammar Fixer Pro",
+  "version": "1.0.0",
+  "description": "AI-powered grammar and spell checker for any text input on any website",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Grammar Fixer Pro"
+  },
+  
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "css": ["content.css"]
+  }],
+  
+  "background": {
+    "service_worker": "background.js"
+  }
+}
