@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grammar Fixer Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Grammar Fixer Pro</h1>
+    
+    <div class="input-section">
+      <label for="text-input">Enter text to fix:</label>
+      <textarea id="text-input" placeholder="Paste or type your text here..."></textarea>
+    </div>
+
+    <div class="options-section">
+      <div class="option-group">
+        <label for="naturalness">Naturalness:</label>
+        <select id="naturalness">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      
+      <div class="option-group">
+        <label for="formality">Formality:</label>
+        <select id="formality">
+          <option value="casual">Casual</option>
+          <option value="neutral" selected>Neutral</option>
+          <option value="formal">Formal</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="fix-btn" class="primary-btn">Fix Grammar</button>
+    
+    <div class="output-section">
+      <label for="text-output">Corrected text:</label>
+      <textarea id="text-output" readonly placeholder="Corrected text will appear here..."></textarea>
+      <button id="copy-btn" class="secondary-btn" disabled>Copy to Clipboard</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="settings-section">
+      <h3>Settings</h3>
+      <div class="option-group">
+        <label for="api-url">Backend URL:</label>
+        <input type="text" id="api-url" value="http://localhost:3000" />
+      </div>
+      <button id="save-settings-btn" class="secondary-btn">Save Settings</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

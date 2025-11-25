@@ -1,0 +1,25 @@
+{
+  "name": "grammar-fixer-pro-backend",
+  "version": "1.0.0",
+  "description": "Backend service for Grammar Fixer Pro Chrome extension",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test test/"
+  },
+  "keywords": [
+    "grammar",
+    "llm",
+    "correction",
+    "chrome-extension"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
