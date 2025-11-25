@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const content = `
       <div class="grammar-fixer-pro-header">
         <strong>Grammar Fixer Pro</strong>
-        <button class="grammar-fixer-pro-close" onclick="this.closest('.grammar-fixer-pro-tooltip').classList.remove('visible')">×</button>
+        <button class="grammar-fixer-pro-close">×</button>
       </div>
       <div class="grammar-fixer-pro-body">
         <div class="grammar-fixer-pro-original">
@@ -74,8 +74,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     `;
     showTooltip(content);
     
-    // Add copy functionality
+    // Add event listeners for buttons
     setTimeout(() => {
+      // Close button
+      const closeBtn = document.querySelector('.grammar-fixer-pro-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          hideTooltip();
+        });
+      }
+      
+      // Copy button
       const copyBtn = document.querySelector('.grammar-fixer-pro-copy');
       if (copyBtn) {
         copyBtn.addEventListener('click', () => {
@@ -92,13 +101,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const content = `
       <div class="grammar-fixer-pro-header">
         <strong>Grammar Fixer Pro</strong>
-        <button class="grammar-fixer-pro-close" onclick="this.closest('.grammar-fixer-pro-tooltip').classList.remove('visible')">×</button>
+        <button class="grammar-fixer-pro-close">×</button>
       </div>
       <div class="grammar-fixer-pro-body">
         <p class="grammar-fixer-pro-error">${escapeHtml(message.message)}</p>
       </div>
     `;
     showTooltip(content, true);
+    
+    // Add event listener for close button
+    setTimeout(() => {
+      const closeBtn = document.querySelector('.grammar-fixer-pro-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          hideTooltip();
+        });
+      }
+    }, 0);
   }
 });
 

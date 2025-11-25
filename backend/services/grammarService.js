@@ -13,6 +13,9 @@ const LLM_CONFIG = {
   baseUrl: process.env.LLM_BASE_URL || 'https://api.openai.com/v1'
 };
 
+// Token calculation multiplier for max_tokens estimation
+const TOKEN_MULTIPLIER = 2;
+
 /**
  * Generate a system prompt based on naturalness and formality settings
  */
@@ -80,7 +83,7 @@ async function callLLM(text, systemPrompt) {
       { role: 'user', content: text }
     ],
     temperature: 0.3,
-    max_tokens: Math.max(text.length * 2, 1000)
+    max_tokens: Math.max(text.length * TOKEN_MULTIPLIER, 1000)
   };
 
   try {
@@ -139,7 +142,7 @@ function fallbackGrammarCorrection(text) {
     { pattern: /\bcould of\b/gi, replacement: 'could have' },
     { pattern: /\bwould of\b/gi, replacement: 'would have' },
     // Its vs it's
-    { pattern: /\bits\s+(?=a\s|an\s|the\s|not\s|been\s|going\s|been\s)/gi, replacement: 'it\'s ' },
+    { pattern: /\bits\s+(?=a\s|an\s|the\s|not\s|been\s|going\s)/gi, replacement: 'it\'s ' },
     // Then vs than in comparisons
     { pattern: /\bbetter then\b/gi, replacement: 'better than' },
     { pattern: /\bmore then\b/gi, replacement: 'more than' },

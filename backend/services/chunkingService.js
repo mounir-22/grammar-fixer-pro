@@ -44,7 +44,7 @@ function findBestSplitPoint(text, targetPosition, maxLookback = 200) {
     return bestSentenceEnd;
   }
 
-  // Priority 2: Clause boundaries (; : , - )
+  // Priority 2: Clause boundaries (; : , -)
   const clausePattern = /[;:,\-]\s+/g;
   let bestClauseEnd = -1;
   
@@ -123,8 +123,8 @@ function chunkText(text, options = {}) {
 
     currentPosition = splitPoint;
 
-    // Safety check to prevent infinite loop
-    if (splitPoint <= currentPosition && currentPosition < text.length) {
+    // Safety check to prevent infinite loop - only increment when no progress
+    if (splitPoint === currentPosition) {
       currentPosition++;
     }
   }
